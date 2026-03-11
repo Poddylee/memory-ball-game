@@ -1,0 +1,175 @@
+/*
+* Memory Ball Game CSS
+* Author: Chao Li
+* Date: July 25, 2025
+* Description: Styles the memory-based sequence game.
+* Defines appearance and animations for:
+*   - SVG balls
+*   - Number texts
+*   - Attempt hearts
+*   - Hover, click, and sequence display animations
+* Key features:
+*   - Bounce on hover
+*   - Flash on correct click
+*   - Shake on wrong click
+*   - Glow effect during sequence display
+*/
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f5f5;
+}
+
+/* Attempt hearts display */
+#attempts {
+    display: inline-flex;
+    gap: 4px;
+    width: 120px;
+    justify-content: flex-start;
+}
+
+.heart {
+    color: pink;
+    font-size: 24px;
+    margin-right: 4px;
+    transition: transform 0.2s;
+    display: inline-block;
+}
+
+.heart.lost {
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    animation:shake 0.3s;
+}
+
+/* Game area styling */
+#game_area {
+    border: 2px solid black;
+    background-color: white;
+    margin: 20px auto;
+    display: block;
+}
+
+/* SVG ball styling */
+.ball circle {
+    fill: skyblue;
+    stroke: black;
+    stroke-width: 2px;
+    transition: transform 0.2s;
+}
+
+/* Hover animation: ball bounces slightly */
+.ball circle:hover {
+    animation: bounce 0.35s;
+    cursor: pointer;
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+
+    30% {
+        transform: translateY(-6px);
+    }
+
+    60% {
+        transform: translateY(2px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Correct and wrong ball states */
+.ball circle.correct {
+    fill: lightgreen;
+}
+
+.ball circle.wrong {
+    fill: red;
+}
+
+/* Ball number text */
+.ball-text {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    fill: #000000;
+    text-anchor: middle;
+    dominant-baseline: middle;
+    pointer-events: none;
+}
+
+.hidden_number {
+    display: none;
+}
+
+/* Flash animation on correct click */
+.ball circle.flash {
+    animation: flashGlow 0.5s ease;
+}
+
+@keyframes flashGlow {
+
+    0% {
+        filter: drop-shadow(0 0 0px yellow);
+    }
+
+    50% {
+        filter: drop-shadow(0 0 15px yellow) drop-shadow(0 0 25px gold);
+    }
+
+    100% {
+        filter: drop-shadow(0 0 0px yellow);
+    }
+
+}
+
+/* Shake animation on wrong click */
+.ball.shake {
+    animation: shake 0.3s;
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-4px);
+    }
+
+    50% {
+        transform: translateX(4px);
+    }
+
+    75% {
+        transform: translateX(-4px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+
+}
+
+/* Glow animation during sequence display */
+.ball.glow circle {
+    animation: glow 1s ease;
+}
+
+@keyframes glow {
+    0% {
+        filter: drop-shadow(0 0 0px yellow);
+    }
+
+    50% {
+        filter: drop-shadow(0 0 15px yellow) drop-shadow(0 0 25px gold);
+    }
+
+    100% {
+        filter: drop-shadow(0 0 0px yellow);
+    }
+
+}

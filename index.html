@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- 
+    Authorship: Chao Li
+    Date: July 25, 2025
+    Project: Memory Ball Game
+    Description: A browser-based memory game using JavaScript, SVG, and CSS animations.
+    Features: 
+      - Animated SVG balls with hover and click effects
+      - Timer with progress bar
+      - Attempt tracking using heart icons
+      - Level progression and high score saved in localStorage
+    -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memory Ball Game</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css" />
+    <script src="game.js" defer></script>
+</head>
+
+<body>
+    <header class="text-center bg-primary text-white py-3 mt-3">
+        <h1>Memory Ball Game</h1>
+        <p>Welcome to the Memory Ball Gme! Your goal is to remeber the sequence of the numbered balls and click them in
+            the correct oder.</p>
+        <p>Try your best to get highest level and improve your memory skills! Good luck!</p>
+    </header>
+
+    <main class="text-center">
+        <div class="container-md mt-3">
+            <div class="row">
+                <div class="col-12 col-md-12">
+                    <p class="fw-bold fs-1">Highest Level: <span id="high_level">0</span></p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <p class="fw-bold fs-2">Current Level: <span id="level">1</span></p>
+                </div>
+                <div class="col-12 col-md-6">
+                    <p class="fw-bold fs-2">Attempt Left: <span id="attempts"></span></p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 col-md-3">
+                    <div class="text-start mt-2">
+                        <h2>How to Play:</h2>
+                        <ol>
+                            <li>Click Start Game</li>
+                            <li>Remember the order of numbers</li>
+                            <li>Numbers disappear</li>
+                            <li>Click balls in correct order</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <p class="fw-bold fs-3">Time Left: <span id="timer">180</span>s</p>
+                    <svg width="400" height="30">
+                        <rect id="time_bar_bg" x="0" y="0" width="400" height="30" fill="#999999" />
+                        <rect id="time_bar" x="0" y="0" width="400" height="30" fill="green" />
+                    </svg>
+                    <svg id="game_area" width="400" height="500"></svg>
+                </div>
+                <div class="col-12 col-md-3">
+                    <div>
+                        <button type="button" id="start_btn" class="btn btn-success w-100 mb-2">Start Game</button>
+                        <button type="button" id="reset_btn" class="btn btn-danger w-100 mb-3">Reset Game</button>
+                    </div>
+                    <div>
+                        <label for="size" class="fw-bold mt-2">Ball Size(15-30):</label>
+                        <input type="range" id="size" value="20" min="15" max="30">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="text-center border-top border-2 border-dark mt-4 pt-3">
+        <p>Memory Ball Game | JS, CSS, SVG | Frontend Project</p>
+    </footer>
+</body>
+
+</html>
